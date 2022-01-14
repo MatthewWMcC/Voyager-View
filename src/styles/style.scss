@@ -1,0 +1,103 @@
+$body-color: #e9ebee;
+$charcoal: #36454f;
+$boulder: #7c817c;
+$blue-ribbon: #0450e7;
+@mixin breakpoint($point) {
+    @if $point == mobile {
+        @media only screen and (min-width: 1px) and (max-width: 599px) {
+            @content;
+        }
+    }
+    @if $point == tablet {
+        @media only screen and (min-width: 600px) and (max-width: 1023px) {
+            @content;
+        }
+    }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+body {
+    background-color: $body-color;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: $charcoal;
+}
+#app-container {
+    padding: 20px;
+    .main-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+    .image-display {
+        display: flex;
+        flex-direction: column;
+        width: 700px;
+        padding: 20px;
+        border: $charcoal 2px solid;
+        border-radius: 8px;
+
+        .title-elements {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-around;
+            h2 {
+                margin: 10px 0;
+                font-size: 16px;
+            }
+        }
+
+        img {
+            margin: 10px 0;
+        }
+        .bottom-row {
+            display: flex;
+            align-items: center;
+            .like-section {
+                width: 100px;
+                height: 100px;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                align-items: center;
+                .like-display {
+                    font-size: 40px;
+                    font-weight: lighter;
+                }
+            }
+            .description {
+                margin-left: 15px;
+                width: 100%;
+                font-size: 14px;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+.btn-styled {
+    background-color: $blue-ribbon;
+    color: #ffffff;
+    border-style: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+        background-color: $boulder;
+    }
+    &:focus-visible {
+        border: black 2px solid;
+    }
+}
