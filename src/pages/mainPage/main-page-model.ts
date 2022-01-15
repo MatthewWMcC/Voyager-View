@@ -7,5 +7,9 @@ export const model = {
         const { date } = store;
         fetchPost(date);
     },
-    handleChangeDate: (date: string) => {},
+    handleChangeDate: (date: string) => {
+        store.date = date;
+        fetchPost(date);
+        m.redraw();
+    },
 };
