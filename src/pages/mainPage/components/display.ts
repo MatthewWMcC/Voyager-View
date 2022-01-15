@@ -1,14 +1,17 @@
 import { store } from 'global/store';
 import m from 'mithril';
+import { likePhoto } from 'services/firestore';
 import uniqid from 'uniqid';
 import { extendButtonAttrs } from 'utils/accessibility-helpers';
 
 export const display: m.Component = {
     view: (vnode: m.VnodeDOM): m.Children => {
-        const { imageData } = store;
+        const { imageData, postData } = store;
         if (!imageData) {
             return m('.loading', 'loading');
         }
+        const { likes, liked, loading } = postData;
+        console.log(postData);
         const { date, explanation, url, title, media_type } = imageData;
         return m(`card.image-display#${uniqid()}`, [
             m('header.title-elements', [
@@ -20,13 +23,15 @@ export const display: m.Component = {
             }),
             m('footer.bottom-row', [
                 m('aside.like-section', [
-                    m('h4.like-display', 0),
+                    m('h4.like-display', likes),
                     m(
                         'button.btn-styled',
-                        extendButtonAttrs({}, (e: Event) =>
-                            model.handleLikePress(e, url)
-                        ),
-                        'Like'
+                        extendButtonAttrs({
+                            disabled: loading,
+                            onclick: (e: Event) =>
+                                model.handleLikePress(e, url),
+                        }),
+                        liked ? 'Unlike' : 'Like'
                     ),
                 ]),
                 m('p.description', explanation),
@@ -36,5 +41,7 @@ export const display: m.Component = {
 };
 
 const model = {
-    handleLikePress: (e: Event, url: string) => {},
+    handleLikePress: (e: Event, url: string) => {
+        likePhoto(url);
+    },
 };

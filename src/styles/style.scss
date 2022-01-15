@@ -2,6 +2,7 @@ $body-color: #e9ebee;
 $charcoal: #36454f;
 $boulder: #7c817c;
 $blue-ribbon: #0450e7;
+$lochmara: #0082ba;
 @mixin breakpoint($point) {
     @if $point == mobile {
         @media only screen and (min-width: 1px) and (max-width: 599px) {
@@ -34,15 +35,36 @@ body {
 }
 #app-container {
     padding: 20px;
+    display: flex;
+    justify-content: center;
     .main-container {
         display: flex;
-        justify-content: center;
-        flex-direction: row;
+        width: 750px;
+        align-items: center;
+        flex-direction: column;
+        .top-row {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            .logo {
+                width: 50%;
+            }
+            .date-picker-outer {
+                width: 50%;
+                display: flex;
+                justify-content: end;
+                align-items: center;
+            }
+        }
+        .middle-row {
+            width: 100%;
+        }
     }
     .image-display {
         display: flex;
         flex-direction: column;
-        width: 700px;
         padding: 20px;
         border: $charcoal 2px solid;
         border-radius: 8px;
@@ -99,5 +121,56 @@ body {
     }
     &:focus-visible {
         border: black 2px solid;
+    }
+}
+.date-picker-container {
+    width: 200px;
+    height: 32px;
+    position: relative;
+    input.date-display {
+        display: flex;
+        flex-direction: row;
+        // padding: 0px 30px 0px 10px;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid $boulder;
+        border-radius: 4px;
+        color: $charcoal;
+        text-align: center;
+        cursor: pointer;
+        padding: 0;
+        &:focus {
+            border: none;
+            outline: 0;
+            border-bottom: $lochmara 2px solid;
+        }
+        &.focused {
+            border-bottom: $lochmara 2px solid;
+        }
+    }
+    .icon {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translate(0, -40%);
+        color: $charcoal;
+        background-color: white;
+        background: transparent;
+        z-index: 1;
+        height: 60%;
+        pointer-events: none;
+        img {
+            height: 100%;
+        }
+    }
+    .date-calendar-container {
+        position: absolute;
+        height: 200px;
+        width: 300px;
+        right: 0;
+        background-color: $body-color;
+        border: $charcoal 1px solid;
+        border-radius: 5px;
     }
 }
