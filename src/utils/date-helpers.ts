@@ -40,7 +40,7 @@ export const getCalendarRows = (
     const dayRows = [];
     for (let i = 1; i <= weekRows; i++) {
         const dayRow = [];
-        for (let j = 0; j <= DAYS_IN_A_WEEK; j++) {
+        for (let j = 1; j <= DAYS_IN_A_WEEK; j++) {
             const dateVal = new Date(
                 selectedYear,
                 selectedMonth,
@@ -104,4 +104,10 @@ const convertNumsToDateString = (
 const localeDateToStandardFormat = (locale: string): string => {
     const [month, date, year] = locale.split('/');
     return `${year}-${month.padStart(2, '0')}-${date.padStart(2, '0')}`;
+};
+
+export const getNewDay = (date: string, days: number): string => {
+    const [year, month, day] = date.split('-').map((val) => parseInt(val));
+    const newDate = new Date(year, month - 1, day + days).toLocaleDateString();
+    return getDateString(newDate);
 };

@@ -67,6 +67,7 @@ export const model = {
         const { onInput } = vnode.attrs;
         const { tempDate } = vnode.state;
         onInput(tempDate);
+        model.handleUnfocus();
     },
     handleGoToToday: (
         vnode: m.VnodeDOM<IDatePickerAttrs, ICalendarState>
