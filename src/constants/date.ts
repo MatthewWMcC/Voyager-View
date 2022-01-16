@@ -12,3 +12,7 @@ export const months = [
     'November',
     'December',
 ];
+
+export const daysOfTheWeek = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
+
+export const DAYS_IN_A_WEEK = 6;

@@ -6,6 +6,7 @@ import { getLocalId } from 'global/user';
 import { removeNonAlphaNumbericChars } from 'utils/string-helpers';
 import { store } from 'global/store';
 import m from 'mithril';
+import { baseStoreData } from 'constants/storeData';
 const app = initializeApp(firebaseConfig);
 
 const db = getDatabase();
@@ -19,7 +20,6 @@ const getLikeList = async (url: string): Promise<Array<string>> => {
 export const likePhoto = async (url: string) => {
     const cleanUrl = removeNonAlphaNumbericChars(url);
     const existingLikeList = await getLikeList(cleanUrl);
-    console.log(existingLikeList);
     const likeList = [
         ...(existingLikeList ? existingLikeList : []),
         getLocalId(),
@@ -45,11 +45,10 @@ export const unlikePhoto = async (url: string) => {
 
 export const watchPost = (url: string) => {
     return onValue(ref(db, removeNonAlphaNumbericChars(url)), (dbData) => {
-        console.log(dbData.val());
         const data = dbData.val();
         if (!data?.likeList) {
             store.postData = {
-                ...store.postData,
+                ...baseStoreData,
                 loading: false,
             };
             m.redraw();

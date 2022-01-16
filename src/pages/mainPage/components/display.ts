@@ -11,7 +11,6 @@ export const display: m.Component = {
             return m('.loading', 'loading');
         }
         const { likes, liked, loading } = postData;
-        console.log(postData);
         const { date, explanation, url, title, media_type } = imageData;
         return m(`card.image-display#${uniqid()}`, [
             m('header.title-elements', [

@@ -3,6 +3,7 @@ $charcoal: #36454f;
 $boulder: #7c817c;
 $blue-ribbon: #0450e7;
 $lochmara: #0082ba;
+$ghost: #c5cdd8;
 @mixin breakpoint($point) {
     @if $point == mobile {
         @media only screen and (min-width: 1px) and (max-width: 599px) {
@@ -56,6 +57,7 @@ body {
                 display: flex;
                 justify-content: end;
                 align-items: center;
+                margin-right: 10px;
             }
         }
         .middle-row {
@@ -108,6 +110,68 @@ body {
     }
 }
 
+.dropdown-container {
+    height: 150px;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+
+    .dropdown-options {
+        background-color: white;
+        border-radius: 0 0 10px 10px;
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        .dropdown-option {
+            height: 24px;
+            display: flex;
+            align-items: center;
+            padding-left: 5px;
+            cursor: pointer;
+            &:hover,
+            &.focused {
+                background-color: $ghost;
+            }
+            &.selected {
+                background-color: $blue-ribbon;
+                color: white;
+            }
+        }
+    }
+    .dropdown-icon {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        height: 10px;
+        color: $boulder;
+        pointer-events: none;
+    }
+}
+input.select-options {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 24px;
+    background: #ffffff;
+    border: 1px solid $boulder;
+    border-radius: 4px;
+    color: $charcoal;
+    cursor: pointer;
+    padding: 0;
+    padding-left: 10px;
+    box-sizing: border-box;
+    &::selection {
+        color: none;
+        background: none;
+    }
+
+    &.open {
+        border-radius: 4px 4px 0 0;
+    }
+}
+
 .btn-styled {
     background-color: $blue-ribbon;
     color: #ffffff;
@@ -116,6 +180,12 @@ body {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    &.small {
+        background-color: white;
+        border: $charcoal 1px solid;
+        font-size: 14px;
+        color: black;
+    }
     &:hover {
         background-color: $boulder;
     }
@@ -140,6 +210,13 @@ body {
         text-align: center;
         cursor: pointer;
         padding: 0;
+        font-size: 16px;
+        padding-left: 10px;
+        box-sizing: border-box;
+        &::selection {
+            color: none;
+            background: none;
+        }
         &:focus {
             border: none;
             outline: 0;
@@ -166,11 +243,72 @@ body {
     }
     .date-calendar-container {
         position: absolute;
-        height: 200px;
-        width: 300px;
+        height: fit-content;
+        width: 250px;
         right: 0;
-        background-color: $body-color;
-        border: $charcoal 1px solid;
+        background-color: white;
+        border: $boulder solid 1px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
         border-radius: 5px;
+        padding: 10px;
+        .top-calendar-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            .month-dropdown {
+                width: 125px;
+            }
+            .year-dropdown {
+                width: 75px;
+            }
+        }
+        .middle-calendar-row {
+            margin-top: 10px;
+            table {
+                display: table;
+                width: 100%;
+                tr {
+                    display: flex;
+                    justify-content: space-around;
+                    padding-bottom: 2px;
+
+                    td {
+                        display: flex;
+                        width: 100%;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 0 2px;
+                        button.td-button {
+                            width: 100%;
+                            border-style: none;
+                            border-radius: 4px;
+                            padding: 4px;
+                            cursor: pointer;
+                            &:hover {
+                                background-color: $boulder;
+                            }
+                            &:focus-visible {
+                                border: black 2px solid;
+                            }
+                            &.disabled {
+                                pointer-events: none;
+                            }
+                            &.selected {
+                                background-color: $blue-ribbon;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .bottom-calendar-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
     }
 }
