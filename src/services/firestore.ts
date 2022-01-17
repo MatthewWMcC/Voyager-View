@@ -26,20 +26,17 @@ export const likePhoto = async (url: string) => {
     ];
     set(ref(db, cleanUrl), {
         url,
-        likeList: likeList,
+        likeList,
     });
 };
 
 export const unlikePhoto = async (url: string) => {
     const cleanUrl = removeNonAlphaNumbericChars(url);
     const existingLikeList = await getLikeList(cleanUrl);
-    const likeList = [
-        ...(existingLikeList ? existingLikeList : []),
-        getLocalId(),
-    ];
+    const likeList = existingLikeList.filter((like) => like !== getLocalId());
     set(ref(db, cleanUrl), {
         url,
-        likeList: likeList,
+        likeList,
     });
 };
 

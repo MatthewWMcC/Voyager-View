@@ -1,6 +1,6 @@
 import { store } from 'global/store';
 import m from 'mithril';
-import { likePhoto } from 'services/firestore';
+import { likePhoto, unlikePhoto } from 'services/firestore';
 import uniqid from 'uniqid';
 import { extendButtonAttrs } from 'utils/accessibility-helpers';
 
@@ -22,13 +22,13 @@ export const display: m.Component = {
             }),
             m('footer.bottom-row', [
                 m('aside.like-section', [
-                    m('h4.like-display', likes),
+                    m(`h4.like-display${liked ? '.liked' : ''}`, likes),
                     m(
                         'button.btn-styled',
                         extendButtonAttrs({
                             disabled: loading,
                             onclick: (e: Event) =>
-                                model.handleLikePress(e, url),
+                                model.handleLikePress(url, liked),
                         }),
                         liked ? 'Unlike' : 'Like'
                     ),
@@ -40,7 +40,11 @@ export const display: m.Component = {
 };
 
 const model = {
-    handleLikePress: (e: Event, url: string) => {
-        likePhoto(url);
+    handleLikePress: (url: string, liked: boolean) => {
+        if (liked) {
+            unlikePhoto(url);
+        } else {
+            likePhoto(url);
+        }
     },
 };

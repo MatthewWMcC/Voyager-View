@@ -4,6 +4,7 @@ $boulder: #7c817c;
 $blue-ribbon: #0450e7;
 $lochmara: #0082ba;
 $ghost: #c5cdd8;
+$bright-red: #ee4b2b;
 @mixin breakpoint($point) {
     @if $point == mobile {
         @media only screen and (min-width: 1px) and (max-width: 599px) {
@@ -11,7 +12,7 @@ $ghost: #c5cdd8;
         }
     }
     @if $point == tablet {
-        @media only screen and (min-width: 600px) and (max-width: 1023px) {
+        @media only screen and (min-width: 600px) and (max-width: 750px) {
             @content;
         }
     }
@@ -33,35 +34,80 @@ body {
     font-weight: normal;
     font-size: 14px;
     color: $charcoal;
+    height: 100vh;
+    margin: 0px;
 }
 #app-container {
     padding: 20px;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
+    @include breakpoint(mobile) {
+        padding: 2px;
+    }
+
     .main-container {
         display: flex;
         width: 750px;
         align-items: center;
         flex-direction: column;
+        @include breakpoint(tablet) {
+            width: 100%;
+        }
         .top-row {
             width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            padding-bottom: 20px;
             .logo {
+                height: fit-content;
                 width: 50%;
+
+                img {
+                    height: 30px;
+                }
             }
             .date-picker-outer {
                 width: 50%;
                 display: flex;
                 justify-content: end;
                 align-items: center;
-                margin-right: 10px;
             }
         }
-        .middle-row {
+        .subtitle {
             width: 100%;
+            padding-left: 25px;
+            box-sizing: border-box;
+        }
+        .middle-row {
+            padding-top: 10px;
+            width: 100%;
+            .error-display {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                h3 {
+                    font-size: 20px;
+                    text-align: center;
+                }
+            }
+        }
+        .button-row {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .space {
+                width: 10px;
+            }
+            .arrow-button {
+                width: 100px;
+                display: flex;
+                padding: 5px;
+                align-items: center;
+                justify-content: center;
+            }
         }
     }
     .image-display {
@@ -70,24 +116,33 @@ body {
         padding: 20px;
         border: $charcoal 2px solid;
         border-radius: 8px;
-
+        align-items: center;
+        @include breakpoint(mobile) {
+            padding: 10px;
+        }
         .title-elements {
             display: flex;
             flex-direction: row;
             width: 100%;
             justify-content: space-around;
+            @include breakpoint(mobile) {
+                flex-direction: column;
+            }
             h2 {
-                margin: 10px 0;
                 font-size: 16px;
             }
         }
 
         img {
             margin: 10px 0;
+            width: 100%;
         }
         .bottom-row {
             display: flex;
             align-items: center;
+            @include breakpoint(mobile) {
+                flex-direction: column;
+            }
             .like-section {
                 width: 100px;
                 height: 100px;
@@ -95,13 +150,27 @@ body {
                 justify-content: space-between;
                 flex-direction: column;
                 align-items: center;
+                @include breakpoint(mobile) {
+                    flex-direction: row;
+                    height: fit-content;
+                    justify-content: space-around;
+                    width: 100%;
+                    button {
+                        margin-left: 10px;
+                    }
+                }
+                button {
+                    width: 65px;
+                }
                 .like-display {
                     font-size: 40px;
                     font-weight: lighter;
+                    &.liked {
+                        color: $bright-red;
+                    }
                 }
             }
             .description {
-                margin-left: 15px;
                 width: 100%;
                 font-size: 14px;
                 font-weight: normal;
@@ -180,6 +249,10 @@ input.select-options {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    &.secondary {
+        background-color: white;
+        color: $charcoal;
+    }
     &.small {
         background-color: white;
         border: $charcoal 1px solid;
@@ -192,6 +265,10 @@ input.select-options {
     &:focus-visible {
         border: black 2px solid;
     }
+    &.disabled {
+        cursor: not-allowed;
+        background: $ghost;
+    }
 }
 .date-picker-container {
     width: 200px;
@@ -200,7 +277,6 @@ input.select-options {
     input.date-display {
         display: flex;
         flex-direction: row;
-        // padding: 0px 30px 0px 10px;
         width: 100%;
         height: 100%;
         background: #ffffff;
@@ -311,4 +387,21 @@ input.select-options {
             margin-top: 10px;
         }
     }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $boulder;
+    border-radius: 5px;
 }

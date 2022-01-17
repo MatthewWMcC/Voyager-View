@@ -6,14 +6,20 @@ import { store } from './store';
 let unsubscribe;
 
 export const fetchPost = async (date: string) => {
-    const picOfTheDay = await getPicOfTheDay(date);
-    store.imageData = picOfTheDay;
-    const { url } = store.imageData;
     if (unsubscribe) {
         unsubscribe();
     }
-    if (url) {
-        unsubscribe = watchPost(url);
+    try {
+        const picOfTheDay = await getPicOfTheDay(date);
+        store.imageData = picOfTheDay;
+        const { url } = store.imageData;
+        if (url) {
+            unsubscribe = watchPost(url);
+        }
+        store.fetchError = false;
+    } catch (e) {
+        store.fetchError = true;
     }
+
     m.redraw();
 };

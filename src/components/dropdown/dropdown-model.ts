@@ -39,8 +39,11 @@ export const model = {
                 model.handleSelectOption(vnode, options[index].value);
             }
         } else if (open && isNextPress(e)) {
+            e.preventDefault();
             vnode.state.index = index < length - 1 ? index + 1 : -1;
         } else if (open && isPrevPress(e)) {
+            e.preventDefault();
+
             vnode.state.index = index >= 0 ? index - 1 : length - 1;
         } else if (e.keyCode === 9) {
             model.handleBlur(vnode);
