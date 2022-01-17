@@ -78,6 +78,7 @@ body {
             width: 100%;
             padding-left: 25px;
             box-sizing: border-box;
+            font-size: 12px;
         }
         .middle-row {
             padding-top: 10px;
@@ -131,6 +132,13 @@ body {
             justify-content: space-around;
             @include breakpoint(mobile) {
                 flex-direction: column;
+                .title {
+                    font-size: 14px;
+                }
+                .date {
+                    font-size: 12px;
+                    font-weight: normal;
+                }
             }
             h2 {
                 font-size: 16px;

@@ -12,14 +12,20 @@ export const display: m.Component = {
         }
         const { likes, liked, loading } = postData;
         const { date, explanation, url, title, media_type } = imageData;
+
+        const isImage = media_type === 'image';
+        const isVideo = media_type === 'video';
+
         return m(`card.image-display#${uniqid()}`, [
             m('header.title-elements', [
                 m('h2.title', title),
                 m('h2.date', date),
             ]),
-            m('img.pic-of-the-day', {
-                src: url,
-            }),
+            isImage &&
+                m('img.pic-of-the-day', {
+                    src: url,
+                }),
+            isVideo && m('video.pic-of-the-day', { src: url }),
             m('footer.bottom-row', [
                 m('aside.like-section', [
                     m(`h4.like-display${liked ? '.liked' : ''}`, likes),
