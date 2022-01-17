@@ -4,10 +4,11 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "build": "webpack",
         "devServer": "cross-env NODE_ENV='development' nodemon server.js",
         "devBuild": "cross-env NODE_ENV='development' webpack --config webpack.config.js --watch",
-        "dev": "concurrently -n build,server \"npm run devBuild\" \"npm run devServer\""
+        "dev": "concurrently -n build,server \"npm run devBuild\" \"npm run devServer\"",
+        "build": "cross-env NODE_ENV='production' webpack --config webpack.config.js",
+        "start": "export NODE_ENV='production' node server.js"
     },
     "author": "",
     "license": "ISC",

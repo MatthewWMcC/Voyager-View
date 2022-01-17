@@ -3,7 +3,6 @@ import { CARET_LEFT, CARET_RIGHT } from 'constants/icons';
 import { store } from 'global/store';
 import m from 'mithril';
 import { extendButtonAttrs } from 'utils/accessibility-helpers';
-import { getBaseUrl } from 'utils/environment-helpers';
 import { display } from './components/display';
 import { model } from './main-page-model';
 import { IMainPageState } from './types';
@@ -18,7 +17,9 @@ export const mainPage: m.Component = {
             m('section.top-row', [
                 m(
                     '.logo',
-                    m('img', { src: getBaseUrl() + '/images/kerbal-logo.png' })
+                    m('img', {
+                        src: 'https://storage.cloud.google.com/kerbal-view.appspot.com/kerbal-logo.png',
+                    })
                 ),
                 m(
                     '.date-picker-outer',
