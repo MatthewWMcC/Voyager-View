@@ -147,7 +147,8 @@ body {
 
         img {
             margin: 10px 0;
-            width: 100%;
+            max-width: 100%;
+            max-height: 50vh;
         }
         .bottom-row {
             display: flex;
@@ -184,8 +185,14 @@ body {
             }
             .description {
                 width: 100%;
+                max-height: 20vh;
                 font-size: 14px;
                 font-weight: normal;
+                overflow: auto;
+                padding-right: 5px;
+                @include breakpoint(mobile) {
+                    max-height: 100vh;
+                }
             }
         }
     }
@@ -403,17 +410,17 @@ input.select-options {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $boulder;
-    border-radius: 5px;
+    background: $ghost;
+    border-radius: 3px;
 }

@@ -49,6 +49,7 @@ export const mainPage: m.Component = {
                         extendButtonAttrs({
                             onclick: () =>
                                 model.handleChangeDate(nextDay, vnode),
+                            disabled: !nextEnabled,
                         }),
                         m.trust(CARET_RIGHT)
                     ),
