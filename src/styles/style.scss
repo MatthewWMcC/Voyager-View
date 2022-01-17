@@ -98,6 +98,7 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
+
             .space {
                 width: 10px;
             }
@@ -119,6 +120,9 @@ body {
         align-items: center;
         @include breakpoint(mobile) {
             padding: 10px;
+            border: none;
+            border-top: $charcoal 2px solid;
+            border-bottom: $charcoal 2px solid;
         }
         .title-elements {
             display: flex;
