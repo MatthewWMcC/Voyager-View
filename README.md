@@ -9,4 +9,4 @@ Includes features such as:
 
 Check it out for yourself (https://matthewwmcc.github.io/Kerbal-View/)
 
-![alt text](https://storage.cloud.google.com/kerbal-view.appspot.com/kerbal-favicon.png "Logo Title Text 1")
+![alt text](/images/kerbal-favicon.png "Logo")
