@@ -1,6 +1,12 @@
 # Kerbal-View
 
-After pulling make sure to run:
-`npm init`
-Developers run:
-`npm run dev` to start the server and visit localhost:3000 to see the site. New Builds will be triggered automatically on change to the src folder.
+Kerbal is a Mithril.js project that displays interesting space photos with the help of Nasa's Photo of the Day API.
+
+Includes features such as:
+    * Date selection and next and prev day buttons to easily navigate daily photos.
+    * A liking system with likes stored in a db. Users can refresh and share the app with friends and their likes will remain.
+    * A responsive UI, can be used in standard desktop view as well as tablet and mobile.
+
+Check it out for yourself (https://matthewwmcc.github.io/Kerbal-View/)
+
+![alt text](https://storage.cloud.google.com/kerbal-view.appspot.com/kerbal-favicon.png "Logo Title Text 1")
