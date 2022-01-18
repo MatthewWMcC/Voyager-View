@@ -38,7 +38,7 @@ body {
     margin: 0px;
 }
 #app-container {
-    padding: 20px;
+    padding: 10px 20px;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
@@ -95,7 +95,6 @@ body {
             }
         }
         .button-row {
-            margin-top: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -347,6 +346,7 @@ input.select-options {
 
         border-radius: 5px;
         padding: 10px;
+        z-index: 2;
         .top-calendar-row {
             display: flex;
             flex-direction: row;

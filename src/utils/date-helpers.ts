@@ -3,6 +3,7 @@ import m from 'mithril';
 import { extendButtonAttrs } from './accessibility-helpers';
 
 export const getDateString = (locale: string) => {
+    console.log(locale);
     return localeDateToStandardFormat(locale);
 };
 
@@ -108,6 +109,8 @@ const localeDateToStandardFormat = (locale: string): string => {
 
 export const getNewDay = (date: string, days: number): string => {
     const [year, month, day] = date.split('-').map((val) => parseInt(val));
-    const newDate = new Date(year, month - 1, day + days).toLocaleDateString();
+    const newDate = new Date(year, month - 1, day + days).toLocaleDateString(
+        'en-US'
+    );
     return getDateString(newDate);
 };
