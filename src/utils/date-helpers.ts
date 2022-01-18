@@ -3,7 +3,6 @@ import m from 'mithril';
 import { extendButtonAttrs } from './accessibility-helpers';
 
 export const getDateString = (locale: string) => {
-    console.log(locale);
     return localeDateToStandardFormat(locale);
 };
 
