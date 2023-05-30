@@ -18,7 +18,7 @@ export const mainPage: m.Component = {
                 m(
                     '.logo',
                     m('img', {
-                        src: 'https://storage.cloud.google.com/kerbal-view.appspot.com/kerbal-logo.png',
+                        src: 'https://storage.cloud.google.com/kerbal-view.appspot.com/Voyager-logo.png',
                     })
                 ),
                 m(

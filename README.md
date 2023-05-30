@@ -1,6 +1,6 @@
-# Kerbal-View
+# Voyager-View
 
-Kerbal is a Mithril.js project that displays interesting space photos with the help of Nasa's Photo of the Day API.
+Voyager is a Mithril.js project that displays interesting space photos with the help of Nasa's Photo of the Day API.
 
 Includes features such as:
 
@@ -8,6 +8,6 @@ Includes features such as:
     - A liking system with likes stored in a db. Users can refresh and share the app with friends and their likes will remain.
     - A responsive UI, can be used in standard desktop view as well as tablet and mobile.
 
-Check it out for yourself (https://matthewwmcc.github.io/Kerbal-View/)
+Check it out for yourself (https://matthewwmcc.github.io/Voyager-View/)
 
-![alt text](/images/kerbal-favicon.png "Logo")
+![alt text](/images/voyager-favicon.png "Logo")
