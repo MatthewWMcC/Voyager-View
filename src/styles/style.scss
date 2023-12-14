@@ -392,12 +392,18 @@ input.select-options {
                             &:focus-visible {
                                 border: black 2px solid;
                             }
-                            &.disabled {
-                                pointer-events: none;
-                            }
+
                             &.selected {
                                 background-color: $blue-ribbon;
                                 color: white;
+                            }
+                            &.future {
+                                pointer-events: none;
+                                border: 1px rgb(255, 119, 119) dotted;
+                            }
+                            &.disabled {
+                                pointer-events: none;
+                                border: none;
                             }
                         }
                     }

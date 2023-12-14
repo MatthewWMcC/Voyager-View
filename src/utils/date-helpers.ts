@@ -31,6 +31,7 @@ export const getCalendarRows = (
     selectedMonth: number,
     selectedYear: number,
     selectedDate: string,
+    currentDate: string,
     onSelect: (date: string) => void
 ) => {
     const daysOffset = new Date(selectedYear, selectedMonth, 1).getDay();
@@ -54,6 +55,7 @@ export const getCalendarRows = (
             );
             const isInactive = day <= 0 || day > daysInMonth;
             const isSelected = dateString === selectedDate;
+            const isFuture = dateString > currentDate;
 
             dayRow.push(
                 m(
@@ -61,11 +63,11 @@ export const getCalendarRows = (
                     m(
                         `button.td-button${isInactive ? '.disabled' : ''}${
                             isSelected ? '.selected' : ''
-                        }`,
+                        }${isFuture ? '.future' : ''}`,
                         extendButtonAttrs({
                             onclick: () => onSelect(dateString),
                             tabindex: isInactive ? -1 : 0,
-                            disabled: isInactive,
+                            disabled: isInactive || isFuture,
                         }),
                         dateVal
                     )

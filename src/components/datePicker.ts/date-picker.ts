@@ -8,6 +8,7 @@ import uniqid from 'uniqid';
 import {
     convertMonthNumToString,
     getCalendarRows,
+    getDateString,
     getYearOptions,
 } from 'utils/date-helpers';
 
@@ -76,6 +77,7 @@ export const datePickerCalendar: m.Component<IDatePickerAttrs, ICalendarState> =
                         selectedMonth,
                         selectedYear,
                         tempDate,
+                        getDateString(new Date().toLocaleDateString('en-US')),
                         (date: string) =>
                             model.handleSelectTempDate(date, vnode)
                     )
