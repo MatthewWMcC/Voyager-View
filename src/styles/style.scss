@@ -62,7 +62,9 @@ body {
             .logo {
                 height: fit-content;
                 width: 50%;
-
+                display: flex;
+                align-items: center;
+                gap: 10px;
                 img {
                     height: 30px;
                 }
@@ -76,7 +78,7 @@ body {
         }
         .subtitle {
             width: 100%;
-            padding-left: 25px;
+            padding-left: 40px;
             box-sizing: border-box;
             font-size: 12px;
         }

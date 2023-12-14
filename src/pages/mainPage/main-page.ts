@@ -15,12 +15,7 @@ export const mainPage: m.Component = {
         const nextEnabled = new Date() > new Date(nextDay.replace('-', '/'));
         return m('section.main-container', [
             m('section.top-row', [
-                m(
-                    '.logo',
-                    m('img', {
-                        src: 'https://storage.cloud.google.com/kerbal-view.appspot.com/Voyager-logo.png',
-                    })
-                ),
+                m('.logo', [m('h3.title', 'Voyager')]),
                 m(
                     '.date-picker-outer',
                     m(datePicker, {
